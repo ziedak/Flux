@@ -1,7 +1,7 @@
 
 ## The Project
 
-We want to make a pricing table for different plans (Month to month, 12/24/36 months) and different mileage packages (lite, standard, unlimited). We should be able to retrieve the latest version of the table (matrix) and save it any changes done to it. However, there's one special case that we need to handle. When we edit any number on the table, it should be updated as is, **except** for the "lite" column; when you edit any number in the light column, the row should be updated automatically. We will explain more later.
+We want to make a pricing table for different plans (Month to month, 12/24/36 months) and different mileage packages (lite, standard, unlimited). We should be able to retrieve the latest version of the table (matrix) and save any changes done to it. However, there's one special case that we need to handle. When we edit any number on the table, it should be updated as is, **except** for the "lite" column; when you edit any number in the light column, the row should be updated automatically. We will explain more later.
 
 ## The Tasks
 
@@ -10,17 +10,17 @@ We want to make a pricing table for different plans (Month to month, 12/24/36 mo
 - Return proper errors in case something is wrong with the matrix (ex: int is string or missing mileage package)
 
 ### Frontend
-- Design and editable the matrix table
+- Design the matrix table and make it editable
 - Fetch the latest table from the api
 - Add 3 buttons
-- Save: Save the table to the database
-- Clear: Clear the table (all values should be 0)
-- Edit/Cancel: Dynamic button that makes it possible to edit/cancel editing the table.
+  - Save: Save the table to the database
+  - Clear: Clear the table (all values should be 0)
+  - Edit/Cancel: Dynamic button that makes it possible to edit/cancel editing the table.
 - Table should be editable only when you click Edit, othewise, the inputs are disabled.
 - Reset the table to previous state if we click on Cancel.
 - Add an action/actions to handle editing the table. Keep note:
-- When you edit any field not in the "lite" column, the table should just update with that new value.
-- When you edit any value in the "lite" column, the other columns in the same row should update with **x2** and **x3** coefficients. See the example after this list.
+  - When you edit any field not in the "lite" column, the table should just update with that new value.
+  - When you edit any value in the "lite" column, the other columns in the same row should update with **x2** and **x3** coefficients. See the example after this list.
 - Save the table and retrieve the latest version.
 - Show errors when validation fails
 
