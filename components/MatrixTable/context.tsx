@@ -1,7 +1,7 @@
 import { createContext, useReducer } from 'react'
 
 /**
- * This is the 
+ * This is the state shape
  */
 interface MatrixTableState {
   /**
@@ -17,7 +17,7 @@ interface MatrixTableState {
 }
 
 /**
- * These are the actions you can dispatch. Add actions you want to help you
+ * These are the types of the actions you can dispatch. Add actions you want to help you
  * type the dispatch function
  */
 type MatrixAction = {
@@ -42,15 +42,18 @@ type MatrixAction = {
 } | {
   type: 'SOME_ACTION',
   payload: any
-} // Here you will need to add your other action(s) in order to edit the pricing (remove SOME_ACTION)
+} // Here you will need to add your other action(s) in order to edit the pricing (remove SOME_ACTION).
 
 /**
- * This is for the Provider component
+ * This is for the Provider component. No need to change.
  */
 type ProviderProps = {
   initialMatrix?: import('../../types').Matrix
 }
 
+/**
+ * This is an empty matrix. No need to change any value in here. The variable is read-only
+ */
 const emptyMatrix = {
   "36months": {
       "lite": 0,
@@ -72,13 +75,23 @@ const emptyMatrix = {
       "standard": 0,
       "unlimited": 0
   }
-}
+} as const
 
+/**
+ * This is the default state we will start with. No need to change anything in here.
+ */
 const defaultState: MatrixTableState = {
   matrix: emptyMatrix,
   originalMatrix: emptyMatrix,
 }
 
+/**
+ * Your reducer is here. This is a la Redux reducer, you simply take an action, then
+ * you work on it and return the state.
+ * 
+ * @param state 
+ * @param action 
+ */
 const reducer = (state: MatrixTableState, action: MatrixAction): MatrixTableState => {
   switch(action.type) {
     case 'SET_MATRIX':
@@ -94,10 +107,11 @@ const reducer = (state: MatrixTableState, action: MatrixAction): MatrixTableStat
   }
 }
 
+// Creating the context, you don't need to change this.
 export const MatrixTableContext = createContext<[MatrixTableState, import('react').Dispatch<MatrixAction>]>([defaultState, () => {}])
 
 /**
- * This is the provider that hosts the state
+ * This is the provider that hosts the state. You don't need to change this.
  * @param param0 
  */
 export const MatrixTableContextProvider: import('react').FC<ProviderProps> = ({ initialMatrix, children }) => {
