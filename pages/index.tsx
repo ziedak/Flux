@@ -1,7 +1,5 @@
-import Head from 'next/head'
-import MatrixTable from '../components/MatrixTable'
-
-
+import Head from "next/head";
+import MatrixTable from "../components/MatrixTable";
 export default function Home() {
   // You can either fetch the pricing here and pass it to MatrixTable
   // or, you can let MatrixTable handle the fetching
@@ -17,9 +15,7 @@ export default function Home() {
         <MatrixTable />
       </main>
 
-      <footer>
-        Good Luck - Flux
-      </footer>
+      <footer>Good Luck - Flux</footer>
 
       <style jsx>{`
         .container {
@@ -165,7 +161,23 @@ export default function Home() {
         * {
           box-sizing: border-box;
         }
+        button {
+          margin-right: 10px;
+          margin-top: 10px;
+        }
+        table {
+          border-collapse: collapse;
+        }
+        th {
+          background: #ccc;
+        }
+
+        th,
+        td {
+          border: 1px solid #ccc;
+          padding: 8px;
+        }
       `}</style>
     </div>
-  )
+  );
 }
